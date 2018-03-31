@@ -1,12 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyXLuaDemo", "MyXLuaDemo.csproj", "{D302EEFB-39E8-0CA1-CBB4-078E1C7BDF92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyXLuaDemo.Editor", "MyXLuaDemo.Editor.csproj", "{18F76296-7F19-CC2E-9363-A63F06C199D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D302EEFB-39E8-0CA1-CBB4-078E1C7BDF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D302EEFB-39E8-0CA1-CBB4-078E1C7BDF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D302EEFB-39E8-0CA1-CBB4-078E1C7BDF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D302EEFB-39E8-0CA1-CBB4-078E1C7BDF92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F76296-7F19-CC2E-9363-A63F06C199D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F76296-7F19-CC2E-9363-A63F06C199D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F76296-7F19-CC2E-9363-A63F06C199D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F76296-7F19-CC2E-9363-A63F06C199D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
