@@ -244,6 +244,7 @@
     <Compile Include="Assets\XLua\Examples\LoadLuaScript\ByString\ByString.cs" />
     <Compile Include="Assets\XLua\Examples\LoadLuaScript\Loader\CustomLoader.cs" />
     <Compile Include="Assets\XLua\Examples\LuaCallCSharp\LuaCallCs.cs" />
+    <Compile Include="Assets\XLua\MyExamples\LuaCallCSharp\LuaCallCSharp.cs" />
     <Compile Include="Assets\XLua\Src\CodeEmit.cs" />
     <Compile Include="Assets\XLua\Src\CopyByValue.cs" />
     <Compile Include="Assets\XLua\Src\DelegateBridge.cs" />
