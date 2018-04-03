@@ -10,7 +10,10 @@ namespace MyExamples {
         string script = @"
 
             local GameObject = CS.UnityEngine.GameObject;
-            local go = new GameObject('go');
+            local go = GameObject('go');
+
+            --typeof
+            go:AddComponent(typeof(CS.UnityEngine.ParticleSystem));
 
 
             --访问成员方法属性
@@ -97,8 +100,26 @@ namespace MyExamples {
             CS.MyExamples.A.MethodE({boxA={x=1,y=2},name='box'});
 
 
-            --typeof
-            go:AddComponent(typeof(CS.UnityEngine.Texture));
+
+            --强转
+            local calc = test:GetCalc();
+            print('calc------add:',calc:Add(1,2));
+            assert(calc.id == 100);
+            cast(calc, typeof(CS.MyExamples.ICalc));
+            print('calc---case---add:',calc:Add(3,4));
+            --需要注意的是，强转interface之后，因为ICalc中并未定义id属性，所以强转之后去访问id的值（其实就没有这个字段了）为nil
+            assert(calc.id == nil);
+            --如同随便访问一个没有的字段qwer
+            assert(calc.qwer == nil);
+
+
+            
+            --扩展方法
+            test:ExtraLog('122334');
+
+
+            --泛化
+            test:GenericMethodWithString();
         ";
 
 		void Start () {
@@ -123,6 +144,15 @@ namespace MyExamples {
         public int index;
         public int Add(int a, int b) {
             return a + b;
+        }
+
+        //对外api 获取对应接口的实例
+        public ICalc GetCalc() {
+            return new CalcClass();
+        }
+
+        public void GenericMethod<T>() {
+            Debug.Log("GenericMethod<" + typeof(T) + ">");
         }
     }
 
@@ -199,5 +229,32 @@ namespace MyExamples {
     public struct BoxB {
         public BoxA boxA;
         public string name;
+    }
+
+    //对外接口，自己测试下来不加LuaCallCSharp也是可行的，还不清楚原因，等深入学习
+    [LuaCallCSharp]
+    public interface ICalc {
+        int Add(int a, int b);
+    }
+
+    //接口的内部实现，不对外
+    class CalcClass : ICalc {
+        public int Add(int a, int b) {
+            return a + b;
+        }
+
+        public int id = 100;
+    }
+
+    //注意注意注意！！！必须加[LuaCallCSharp]
+    [LuaCallCSharp]
+    public static class ExtraTest {
+        public static void ExtraLog(this Test test, string s) {
+            Debug.Log("ExtraTest----ExtraLog---" + s);
+        }
+
+        public static void GenericMethodWithString(this Test test) {
+            test.GenericMethod<string>();
+        }
     }
 }
