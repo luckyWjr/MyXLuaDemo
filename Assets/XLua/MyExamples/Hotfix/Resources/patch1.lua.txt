@@ -1,0 +1,9 @@
+-- ²¹¶¡1
+
+print("exe-----------patch1");
+
+xlua.private_accessible(CS.MyExamples.Hotfix);  
+
+xlua.hotfix(CS.MyExamples.Hotfix, "Show", function(self)  
+    print("lua---Show");
+end)

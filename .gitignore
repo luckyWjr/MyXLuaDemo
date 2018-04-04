@@ -5,3 +5,4 @@ obj/Debug
 AssetBundles
 .vs
 Assets/StreamingAssets
+Assets/XLua/Gen

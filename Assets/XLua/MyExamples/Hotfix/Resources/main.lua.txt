@@ -1,0 +1,8 @@
+--lua的主文件，在这里面加载其他的lua脚本
+print("main.lua   start");
+
+-- 打补丁
+local list = require("PatchList");
+for _,filename in ipairs(list) do
+	require(filename);
+end
