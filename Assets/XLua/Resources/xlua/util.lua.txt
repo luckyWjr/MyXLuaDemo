@@ -8,24 +8,34 @@ local unpack = unpack or table.unpack
 
 local function async_to_sync(async_func, callback_pos)
     return function(...)
+		--coroutine.running() 返回当前正在运行的协程加一个布尔量。 如果当前运行的协程是主线程，其为真。
         local _co = coroutine.running() or error ('this function must be run in coroutine')
         local rets
         local waiting = false
+
+		--回调方法
         local function cb_func(...)
             if waiting then
+				--再次启动协程
                 assert(coroutine.resume(_co, ...))
             else
                 rets = {...}
             end
         end
+
         local params = {...}
+		--添加回调
         table.insert(params, callback_pos or (#params + 1), cb_func)
+
+		--unpack逐个返回所有的表元素
         async_func(unpack(params))
+
         if rets == nil then
             waiting = true
+			--协程挂起，当执行回调的时候再次启动，ret为cb_func传入的参数
             rets = {coroutine.yield()}
         end
-        
+		--返回传入回调的参数值
         return unpack(rets)
     end
 end

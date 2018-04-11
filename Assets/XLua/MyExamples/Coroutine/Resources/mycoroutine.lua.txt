@@ -1,0 +1,35 @@
+print("coroutine start!");
+
+--没有yield的协程
+local newCor1 = coroutine.create(function()
+	return 1,"a"
+end)
+
+local ret1, num1, str1 = coroutine.resume(newCor1)
+
+print("1-----", ret1, num1, str1)
+
+--包含一个yield的协程，主要看参数相关
+local newCor2 = coroutine.create(function(x)
+	x = x+10;
+	--str和y的值为resume传入的值
+	local str, y = coroutine.yield(x);
+	return str, y + x
+end)
+
+local ret2, x = coroutine.resume(newCor2, 50)
+print("2-----", x)
+local ret3, str2, y = coroutine.resume(newCor2, "sss", 100);
+print("2-----", str2, y)
+
+local newCor3 = coroutine.wrap(function(x)
+	x = x - 10;
+	local y = coroutine.yield(x);
+	return y;
+end)
+
+--不需要resume函数来唤起，直接调用wrap返回的值
+local ret4 = newCor3(100);
+print("3-----", ret4)
+local ret5 = newCor3(10);
+print("3-----", ret5)
