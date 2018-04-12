@@ -139,7 +139,7 @@ namespace MyExamples {
         }
     }
 
-
+    [LuaCallCSharp]
     public class Test {
         public int index;
         public int Add(int a, int b) {
