@@ -291,7 +291,6 @@
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\message_box.lua.txt" />
     <None Include="Assets\XLua\Examples\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
-    <None Include="Assets\XLua\Gen\link.xml" />
     <None Include="Assets\XLua\MyExamples\Coroutine\Resources\mycoroutine.lua.txt" />
     <None Include="Assets\XLua\MyExamples\Hotfix\Resources\main.lua.txt" />
     <None Include="Assets\XLua\MyExamples\Hotfix\Resources\patch1.lua.txt" />

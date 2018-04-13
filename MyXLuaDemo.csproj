@@ -244,14 +244,6 @@
     <Compile Include="Assets\XLua\Examples\LoadLuaScript\ByString\ByString.cs" />
     <Compile Include="Assets\XLua\Examples\LoadLuaScript\Loader\CustomLoader.cs" />
     <Compile Include="Assets\XLua\Examples\LuaCallCSharp\LuaCallCs.cs" />
-    <Compile Include="Assets\XLua\Gen\DelegatesGensBridge.cs" />
-    <Compile Include="Assets\XLua\Gen\EnumWrap.cs" />
-    <Compile Include="Assets\XLua\Gen\MyExamplesNeedBlackListClassWrap.cs" />
-    <Compile Include="Assets\XLua\Gen\PackUnpack.cs" />
-    <Compile Include="Assets\XLua\Gen\UnityEngineGameObjectWrap.cs" />
-    <Compile Include="Assets\XLua\Gen\UnityEngineParticleSystemWrap.cs" />
-    <Compile Include="Assets\XLua\Gen\WrapPusher.cs" />
-    <Compile Include="Assets\XLua\Gen\XLuaGenAutoRegister.cs" />
     <Compile Include="Assets\XLua\MyExamples\BlackList\BlackList.cs" />
     <Compile Include="Assets\XLua\MyExamples\Coroutine\Coroutine.cs" />
     <Compile Include="Assets\XLua\MyExamples\Hotfix\Hotfix.cs" />
@@ -288,7 +280,6 @@
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\message_box.lua.txt" />
     <None Include="Assets\XLua\Examples\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
-    <None Include="Assets\XLua\Gen\link.xml" />
     <None Include="Assets\XLua\MyExamples\Coroutine\Resources\mycoroutine.lua.txt" />
     <None Include="Assets\XLua\MyExamples\Hotfix\Resources\main.lua.txt" />
     <None Include="Assets\XLua\MyExamples\Hotfix\Resources\patch1.lua.txt" />
