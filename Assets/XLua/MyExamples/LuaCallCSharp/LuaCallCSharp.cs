@@ -124,8 +124,12 @@ namespace MyExamples {
 
 		void Start () {
             luaenv = new LuaEnv();
+            float start = Time.realtimeSinceStartup;
+
             luaenv.DoString(script);
-            
+
+            float end = Time.realtimeSinceStartup;
+            Debug.Log(String.Format("{0:F6}", end - start));
         }
 		
 		void Update () {
@@ -135,11 +139,13 @@ namespace MyExamples {
         }
 
         void OnDestroy() {
-            luaenv.Dispose();
+            if(luaenv != null) {
+                luaenv.Dispose();
+            }
         }
     }
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public class Test {
         public int index;
         public int Add(int a, int b) {
@@ -156,6 +162,7 @@ namespace MyExamples {
         }
     }
 
+    //[LuaCallCSharp]
     public class TestSon : Test {
         public int Multiply(int a, int b) {
             return a * b;
@@ -173,6 +180,7 @@ namespace MyExamples {
             Debug.Log("Log---a:" + a);
         }
 
+        //[CSharpCallLua]
         public delegate int IntDelegate(int a);
         public IntDelegate intDelegate = (a) => {
             Debug.Log("C#--intDelegate----a:" + a);
@@ -186,6 +194,7 @@ namespace MyExamples {
         }
     }
 
+    //[LuaCallCSharp]
     public class A {
         public static int Method(int a, ref int b, out int c, Action funA, out Action funB) {
             Debug.Log("Method-----a:" + a + "----b:" + b);
@@ -193,6 +202,11 @@ namespace MyExamples {
             funA();
             funB = () => { Debug.Log("exe---funB"); };
             return 5;
+        }
+
+        public static void MethodF(Func<int> f) {
+            int s = f();
+            Debug.Log("MethodF----" + s);
         }
 
         public static void MethodB(int a, int b, string c, string d = "ddd") {
@@ -231,8 +245,7 @@ namespace MyExamples {
         public string name;
     }
 
-    //对外接口，自己测试下来不加LuaCallCSharp也是可行的，还不清楚原因，等深入学习
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public interface ICalc {
         int Add(int a, int b);
     }
@@ -246,8 +259,7 @@ namespace MyExamples {
         public int id = 100;
     }
 
-    //注意注意注意！！！必须加[LuaCallCSharp]
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public static class ExtraTest {
         public static void ExtraLog(this Test test, string s) {
             Debug.Log("ExtraTest----ExtraLog---" + s);

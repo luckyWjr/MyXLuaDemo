@@ -276,6 +276,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\XLua\MyExamples\Editor\XLuaConfig.cs" />
     <Compile Include="Assets\XLua\MyExamples\Hotfix\Editor\HotfixConfig.cs" />
     <Compile Include="Assets\XLua\Src\Editor\Generator.cs" />
     <Compile Include="Assets\XLua\Src\Editor\Hotfix.cs" />
