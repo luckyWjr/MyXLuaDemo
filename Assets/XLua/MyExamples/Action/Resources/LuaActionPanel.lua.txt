@@ -1,0 +1,44 @@
+LuaActionPanel = {};
+local this = LuaActionPanel;
+
+local UnityEngine = CS.UnityEngine;
+
+local m_actionText;
+local m_actionItem;
+local m_parent;
+
+function this.Awake()
+	m_actionText = this.transform:Find("ActionText"):GetComponent("Text");
+	m_actionItem = this.transform:Find("ItemPanel/ActionItem");
+	m_parent = this.transform:Find("ItemPanel").transform;
+end
+
+function this.Start()
+	m_actionText.text = "噼里啪啦活动";
+
+	local item1 = UnityEngine.GameObject.Instantiate(m_actionItem);
+	item1.transform:SetParent(m_parent);
+	this.AddItem(item1.transform, 0, "活动2", "活动描述：123435243543524352543254352435243523452345342523");
+
+	local item2 = UnityEngine.GameObject.Instantiate(m_actionItem);
+	item2.transform:SetParent(m_parent);
+	this.AddItem(item2.transform, 1, "活动3", "活动描述：++++++++++++++++++++++++++++++++++++++++++++++++");
+
+end
+
+function this.AddItem(itemTrans, index, title, content)
+	m_titleText = itemTrans:Find("TitleText"):GetComponent("Text");
+	m_contentText = itemTrans:Find("ContentText"):GetComponent("Text");
+	m_btn = itemTrans:Find("Button"):GetComponent("Button");
+
+	m_titleText.text = title;
+    m_contentText.text = content;
+	m_btn.onClick:AddListener(function()
+		print("index:"..index);
+	end);
+
+	itemTrans.localPosition = UnityEngine.Vector3(150 + index * 230, 0, 0);
+    itemTrans.localScale = UnityEngine.Vector3.one;
+
+	itemTrans.gameObject:SetActive(true);
+end

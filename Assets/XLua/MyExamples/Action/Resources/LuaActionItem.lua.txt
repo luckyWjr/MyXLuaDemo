@@ -1,0 +1,18 @@
+LuaActionItem = {};
+local this = LuaActionItem;
+
+--local UnityEngine = CS.UnityEngine;
+
+local m_titleText;
+local m_contentText;
+local m_btn;
+
+local m_index;
+
+function this.Awake()
+	print("LuaActionItem awake");
+	m_titleText = this.transform:Find("TitleText"):GetComponent("Text");
+	m_contentText = this.transform:Find("ContentText"):GetComponent("Text");
+	m_btn = this.transform:Find("Button"):GetComponent("Button");
+end
+
